@@ -10,6 +10,7 @@ dotenv.config({ path: './config/config.env' })
 // Load Models
 const Comment = require('./models/Comment');
 const Prophecy = require('./models/Prophecy');
+const User = require('./models/User');
 
 
 //connect to DB
@@ -23,6 +24,7 @@ mongoose.connect(process.env.MONGO_URI, {
 //Read JSON Files
 const comments = JSON.parse(fs.readFileSync(`${__dirname}/_data/comments.json`, 'utf-8'))
 const prophecies = JSON.parse(fs.readFileSync(`${__dirname}/_data/prophecies.json`, 'utf-8'))
+const users = JSON.parse(fs.readFileSync(`${__dirname}/_data/users.json`, 'utf-8'))
 
 
 //Import into DB
@@ -30,8 +32,11 @@ const importData = async () => {
     try {
         await Comment.create(comments)
         console.log(`Comments Imported...`.green.inverse)
+        await Prophecy.create(prophecies)
         console.log(`Prophecies Imported...`.green.inverse)
-        await Prophecy.create(courses)
+        await User.create(users)
+        console.log(`Users Imported...`.green.inverse)
+
         console.log(`Data Import Complete.`.green.inverse)
 
         process.exit(0)
@@ -51,10 +56,12 @@ const deleteData = async () => {
         await Prophecy.deleteMany()
         console.log(`Prophecies Destoryed...`.red.inverse)
 
+        await User.deleteMany()
+        console.log(`Users Destoryed...`.red.inverse)
+
+
         console.log(`Data wipe complete.`.red.inverse)
-
         process.exit(0)
-
     } catch (err) {
         console.log(err)
         process.exit(1)
@@ -68,4 +75,7 @@ if (seedType === '-i') {
     importData()
 } else if (seedType === '-d') {
     deleteData();
+} else {
+    console.log(`Syntax Error: Try 'node seeder [ -i | -d ] to import or delete seeed data'`)
+    process.exit(0)
 }
