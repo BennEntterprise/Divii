@@ -1,20 +1,25 @@
 const mongoose = require('mongoose')
+const colors = require('colors')
 
+const MONGO_BASE_PRE = process.env.MONGO_BASE_PRE
+const MONGO_BASE_POST = process.env.MONGO_BASE_POST
+const MONGO_USER = process.env.MONGO_USER
+const MONGO_PASSWORD = process.env.MONGO_PASSWORD
 
-
-const uri = `mongodb+srv://kyle123:kyle123@cluster0-u2f52.mongodb.net/divii?retryWrites=true&w=majority`
+const fullConnectionString = `${MONGO_BASE_PRE}${MONGO_USER}:${MONGO_PASSWORD}${MONGO_BASE_POST}`
 
 const connectToDb = async () => {
     try {
-        console.log(`Attempting Connection to: ${uri}`)
-        await mongoose.connect(uri, {
+        console.log(`Attempting Connection to: ${MONGO_BASE_POST}`.yellow)
+        await mongoose.connect(fullConnectionString, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true,
             useFindAndModify: true
         })
+        console.log(`Connection Complete`.green)
     } catch (err) {
-        console.error(err.message)
+        console.error(`${err.message}`.red)
         process.exit(1)
     }
 }
