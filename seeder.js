@@ -6,15 +6,16 @@ const dotenv = require('dotenv')
 //Load Env Vars. 
 dotenv.config({ path: './config/config.env' })
 
-
 // Load Models
 const Comment = require('./models/Comment');
 const Prophecy = require('./models/Prophecy');
 const User = require('./models/User');
 
 
+// build full connection string. 
+const fullConnectionString = `${process.env.MONGO_BASE_PRE}${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}${process.env.MONGO_BASE_POST}`
 //connect to DB
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(fullConnectionString, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,

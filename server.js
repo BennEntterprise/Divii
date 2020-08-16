@@ -27,6 +27,24 @@ app.use(express.static('/client/public'))
 app.get('/api', (req, res) => {
     res.send('API RUNNING')
 })
+
+// Bring in Models 
+const Comment = require('./models/Comment')
+const User = require('./models/User')
+const Prophecy = require('./models/Prophecy')
+app.get('/api/comments', async (req, res) => {
+    const comments = await Comment.find()
+    res.json(comments)
+})
+app.get('/api/users', async (req, res) => {
+    const users = await User.find()
+    res.json(users)
+})
+app.get('/api/prophecies', async (req, res) => {
+    const users = await User.find()
+    res.json(users)
+})
+
 const PORT = process.env.PORT || 5000;
 const HOST = process.env.HOST || `localhost`
 app.listen(PORT, () => console.log(`You The Server is Listening on ${HOST}:${PORT}`))

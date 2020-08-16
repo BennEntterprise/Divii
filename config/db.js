@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const colors = require('colors')
+const dotenv = require('dotenv')
 
+dotenv.config({ path: './config.env' })
 const MONGO_BASE_PRE = process.env.MONGO_BASE_PRE
 const MONGO_BASE_POST = process.env.MONGO_BASE_POST
 const MONGO_USER = process.env.MONGO_USER
