@@ -1,8 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const bcrypt = require('bcryptjs')
 
 const UserSchema = new Schema({
-    _id: Schema.Types.ObjectId,
+    _id: {
+        type: Schema.Types.ObjectId,
+        required: false,
+        default: mongoose.Types.ObjectId
+    },
     name: {
         type: String,
         required: [true, 'Please add a name'],
@@ -34,6 +39,15 @@ const UserSchema = new Schema({
         default: Date.now
     }
 })
+
+// Encrypt password 'this' referes the the record in creation
+UserSchema.pre('save', async function (next) {
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt)
+})
+
+// Sign JWT and Return
+
 
 const User = mongoose.model('User', UserSchema)
 

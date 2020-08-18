@@ -10,6 +10,7 @@ const errorHandler = require('./middleware/error')
 
 // Bring in routers
 const comment = require('./routes/comments')
+const auth = require('./routes/auth')
 
 // Connect to Database
 // TODO: Remove connection string from file.
@@ -28,6 +29,7 @@ app.get('/api', (req, res) => {
 })
 // Mount Routers
 app.use('/api/comments', comment)
+app.use('/api/auth', auth)
 
 // Mount error handler @ end of piepline
 app.use(errorHandler)
