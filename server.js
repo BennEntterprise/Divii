@@ -5,9 +5,11 @@ const morgan = require('morgan')
 const dotenv = require('dotenv')
 dotenv.config({ path: './config/config.env' })
 
+// Custom middlewares
+const errorHandler = require('./middleware/error')
 
-//Bring in Routers
-// const comments = require('./controllers/comments')
+// Bring in routers
+const comment = require('./routes/comments')
 
 // Connect to Database
 // TODO: Remove connection string from file.
@@ -21,21 +23,23 @@ app.use(express.json())
 app.use(express.static('/client/public'))
 
 
-// Mount Routers
-
-// TEST Route
 app.get('/api', (req, res) => {
     res.send('API RUNNING')
 })
+// Mount Routers
+app.use('/api/comments', comment)
+
+// Mount error handler @ end of piepline
+app.use(errorHandler)
+
 
 // Bring in Models 
 const Comment = require('./models/Comment')
 const User = require('./models/User')
 const Prophecy = require('./models/Prophecy')
-app.get('/api/comments', async (req, res) => {
-    const comments = await Comment.find()
-    res.json(comments)
-})
+
+
+
 app.get('/api/users', async (req, res) => {
     const users = await User.find()
     res.json(users)
