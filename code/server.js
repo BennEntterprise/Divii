@@ -3,6 +3,7 @@ const path = require('path');
 const app = express();
 const morgan = require('morgan')
 const dotenv = require('dotenv')
+const cookieParser = require('cookie-parser')
 dotenv.config({ path: './config/config.env' })
 
 // Custom middlewares
@@ -21,6 +22,7 @@ dbConnect();
 // Initialize Middlewares
 app.use(morgan('dev'))
 app.use(express.json())
+app.use(cookieParser())
 app.use(express.static('/client/public'))
 
 
