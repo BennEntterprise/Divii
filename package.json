@@ -1,0 +1,23 @@
+{
+  "name": "divii",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js --prefix code",
+    "build-client": "cd code && cd client && npm run build",
+    "build-server": "tsc",
+    "devserver": "nodemon server.js",
+    "heroku-postbuild": "cd code && cd client && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BennEntterprise/Divii.git"
+  },
+  "author": "Kyle Bennett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BennEntterprise/Divii/issues"
+  },
+  "homepage": "https://github.com/BennEntterprise/Divii#readme"
+}

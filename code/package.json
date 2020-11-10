@@ -1,7 +1,6 @@
 {
   "name": "divii",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,8 +8,8 @@
     "dev-server": "nodemon server",
     "dev-client": "npm start --prefix client",
     "dev": "concurrently \"npm run dev-server \" \"npm run dev-client\"",
-    "build-client":"cd client && npm run build",
-    "build-server":"tsc",
+    "build-client": "cd client && npm run build",
+    "build-server": "tsc",
     "devserver": "nodemon server.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
@@ -18,7 +17,7 @@
     "type": "git",
     "url": "git+https://github.com/BennEntterprise/Divii.git"
   },
-  "author": "",
+  "author": "Kyle Bennett",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/BennEntterprise/Divii/issues"
@@ -38,5 +37,6 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.29",
     "morgan": "^1.10.0"
-  }
+  },
+  "description": ""
 }
