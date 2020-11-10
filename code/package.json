@@ -9,6 +9,8 @@
     "dev-server": "nodemon server",
     "dev-client": "npm start --prefix client",
     "dev": "concurrently \"npm run dev-server \" \"npm run dev-client\"",
+    "build-client":"cd client && npm run build",
+    "build-server":"tsc",
     "devserver": "nodemon server.js"
   },
   "repository": {
