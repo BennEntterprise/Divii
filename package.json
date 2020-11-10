@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js --prefix code",
+    "start": "node code/server.js",
     "build-client": "cd code && cd client && npm run build",
     "build-server": "tsc",
     "devserver": "nodemon server.js",
