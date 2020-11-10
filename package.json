@@ -9,7 +9,8 @@
     "build-server": "tsc",
     "devserver": "nodemon server.js",
     "install-server":"cd code && npm install",
-    "heroku-postbuild": "cd code && cd client && npm install && npm run build"
+    "install-client":"cd code && cd client && npm install && npm run build",
+    "heroku-postbuild": "concurrently \"npm install-server\" \"npm install-client\""
   },
   "repository": {
     "type": "git",
