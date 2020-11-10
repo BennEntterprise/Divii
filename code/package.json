@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server",
-    "dev-server": "nodemon server",
+    "dev-server": "nodemon server.ts",
     "dev-client": "npm start --prefix client",
     "dev": "concurrently \"npm run dev-server \" \"npm run dev-client\"",
     "build-client": "cd client && npm run build",
