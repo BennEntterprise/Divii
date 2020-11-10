@@ -1,17 +1,17 @@
 [
     {
         "_id": "000000000000000000000001",
-        "username": "alovelace",
-        "firstName": "Ada",
-        "lastName": "Lovelace",
+        "name": "alovelace",
+        "email": "Ada@mail.com",
+        "role": "user",
         "password": "password",
         "passwordSalt": "passwordSalt"
     },
     {
         "_id": "000000000000000000000002",
-        "username": "ubob",
-        "firstName": "Uncle",
-        "lastName": "Bob",
+        "name": "ubob",
+        "email": "Uncle@mail.com",
+        "role": "user",
         "password": "password",
         "passwordSalt": "passwordSalt"
     }
