@@ -11,7 +11,8 @@
     "dev": "concurrently \"npm run dev-server \" \"npm run dev-client\"",
     "build-client":"cd client && npm run build",
     "build-server":"tsc",
-    "devserver": "nodemon server.js"
+    "devserver": "nodemon server.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
